@@ -101,9 +101,8 @@ class _MenuViewState extends State<MenuView> {
             ),
 
             const SizedBox(height: 10),
-          
-          
-          
+            //! Promo tile done , textfield done 
+            //! complete the view (bestseller and food menu)
           ],
         ),
       ),
