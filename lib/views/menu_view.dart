@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi/components/custom_button.dart';
+import 'package:sushi/components/custom_text_field.dart';
+import 'package:sushi/components/food_tile.dart';
+import 'package:sushi/components/popular_tile.dart';
+import 'package:sushi/components/promo_tile.dart';
 import 'package:sushi/constants.dart';
+import 'package:sushi/models/food_model.dart';
 
 class MenuView extends StatefulWidget {
   const MenuView({super.key});
@@ -11,6 +16,42 @@ class MenuView extends StatefulWidget {
 }
 
 class _MenuViewState extends State<MenuView> {
+  List<Food> foodMenu = [
+    Food(
+      name: "Sushi",
+      imagePath: 'assets/images/sushiz.png',
+      price: "20",
+      rating: "4.0",
+    ),
+
+    Food(
+      name: "Ramen",
+      imagePath: 'assets/images/ramen.png',
+      price: "60",
+      rating: "5.0",
+    ),
+
+    Food(
+      name: "tampura",
+      imagePath: 'assets/images/tempura.png',
+      price: "40",
+      rating: '4.5',
+    ),
+
+    Food(
+      name: "Takoyaki",
+      imagePath: "assets/images/takoyaki.png",
+      price: "30",
+      rating: "4.2",
+    ),
+
+    Food(
+      name: "Yakitori",
+      imagePath: "assets/images/yakitori.png",
+      price: "25",
+      rating: "4.0",
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,57 +75,11 @@ class _MenuViewState extends State<MenuView> {
 
           children: [
             const SizedBox(height: 14),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 25),
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 30),
-              decoration: BoxDecoration(
-                color: primaryRed,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 8),
-                      Text(
-                        "Get 30% Promo",
-                        style: GoogleFonts.dmSerifDisplay(
-                          color: Colors.white,
-                          fontSize: 24,
-                        ),
-                      ),
-                      CustomButton(text: "Redeem", onTap: () {}),
-                    ],
-                  ),
-
-                  Image.asset('assets/images/sushiz.png', height: 100),
-                ],
-              ),
-            ),
+            const PromoTile(),
             const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28.0),
-              child: TextField(
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  label: const Text(
-                    "Search Here",
-                    style: TextStyle(fontSize: 16, color: Colors.black),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28.0),
+              child: CustomTextField(),
             ),
 
             const SizedBox(height: 30),
@@ -101,8 +96,18 @@ class _MenuViewState extends State<MenuView> {
             ),
 
             const SizedBox(height: 10),
-            //! Promo tile done , textfield done 
-            //! complete the view (bestseller and food menu)
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder:
+                    (context, index) => FoodTile(food: foodMenu[index]),
+                itemCount: foodMenu.length,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            const PopularTile(),
           ],
         ),
       ),
