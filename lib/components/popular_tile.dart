@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PopularTile extends StatelessWidget {
-  const PopularTile({
-    super.key,
-  });
+  const PopularTile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +17,16 @@ class PopularTile extends StatelessWidget {
         child: Row(
           children: [
             Image.asset('assets/images/suhis_dish.png', height: 80),
-    
+
             const SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Special Dish",
+                  "Special Meal",
                   style: GoogleFonts.dmSerifDisplay(fontSize: 20),
                 ),
-                Text(
-                  "\$20.00",
-                  style: GoogleFonts.poppins(fontSize: 16),
-                ),
+                Text("\$20.00", style: GoogleFonts.poppins(fontSize: 16)),
               ],
             ),
             const Spacer(),
@@ -42,4 +37,3 @@ class PopularTile extends StatelessWidget {
     );
   }
 }
-

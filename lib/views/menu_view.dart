@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sushi/views/food_detail_view.dart';
 import '../components/custom_text_field.dart';
 import '../components/food_tile.dart';
 import '../components/popular_tile.dart';
@@ -50,6 +51,14 @@ class _MenuViewState extends State<MenuView> {
       rating: "4.0",
     ),
   ];
+
+  void navigateToDetailView(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const FoodDetailView()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,10 +75,10 @@ class _MenuViewState extends State<MenuView> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-    
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-    
+
         children: [
           const SizedBox(height: 14),
           const PromoTile(),
@@ -78,7 +87,7 @@ class _MenuViewState extends State<MenuView> {
             padding: EdgeInsets.symmetric(horizontal: 28.0),
             child: CustomTextField(),
           ),
-    
+
           const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -91,19 +100,22 @@ class _MenuViewState extends State<MenuView> {
               ),
             ),
           ),
-    
+
           const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder:
-                  (context, index) => FoodTile(food: foodMenu[index]),
+                  (context, index) =>
+                      FoodTile(onTap: () {
+                        navigateToDetailView(index);
+                      }, food: foodMenu[index]),
               itemCount: foodMenu.length,
             ),
           ),
-    
+
           const SizedBox(height: 20),
-    
+
           const PopularTile(),
         ],
       ),
