@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi/models/shop_model.dart';
@@ -9,7 +8,7 @@ import 'views/menu_view.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    ChangeNotifierProvider(create: (context) => Shop(), child: DevicePreview(builder : (context) => const MyApp())),
+    ChangeNotifierProvider(create: (context) => Shop(), child: const MyApp()),
   );
 }
 
