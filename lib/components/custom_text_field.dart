@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    super.key,
-  });
+  const CustomTextField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +16,9 @@ class CustomTextField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.black),
           borderRadius: BorderRadius.circular(20),
         ),
-    
+
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.white),
+          borderSide: const BorderSide(color: Colors.black),
           borderRadius: BorderRadius.circular(20),
         ),
       ),

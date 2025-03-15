@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sushi/components/custom_button.dart';
-import 'package:sushi/components/custom_text_field.dart';
-import 'package:sushi/components/food_tile.dart';
-import 'package:sushi/components/popular_tile.dart';
-import 'package:sushi/components/promo_tile.dart';
-import 'package:sushi/constants.dart';
-import 'package:sushi/models/food_model.dart';
+import '../components/custom_text_field.dart';
+import '../components/food_tile.dart';
+import '../components/popular_tile.dart';
+import '../components/promo_tile.dart';
+import '../models/food_model.dart';
 
 class MenuView extends StatefulWidget {
   const MenuView({super.key});
@@ -54,62 +52,60 @@ class _MenuViewState extends State<MenuView> {
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey[300],
-        appBar: AppBar(
-          actions: const [
-            Padding(
-              padding: EdgeInsets.only(right: 12.0),
-              child: Icon(Icons.menu),
-            ),
-          ],
-          centerTitle: true,
-          title: Text('Tokyo', style: GoogleFonts.poppins(fontSize: 24)),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-
-          children: [
-            const SizedBox(height: 14),
-            const PromoTile(),
-            const SizedBox(height: 30),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.0),
-              child: CustomTextField(),
-            ),
-
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text(
-                "Food Menu",
-                style: TextStyle(
-                  color: Colors.grey[800],
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12.0),
+            child: Icon(Icons.menu),
+          ),
+        ],
+        centerTitle: true,
+        title: Text('Tokyo', style: GoogleFonts.poppins(fontSize: 24)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+    
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+    
+        children: [
+          const SizedBox(height: 14),
+          const PromoTile(),
+          const SizedBox(height: 30),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28.0),
+            child: CustomTextField(),
+          ),
+    
+          const SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            child: Text(
+              "Food Menu",
+              style: TextStyle(
+                color: Colors.grey[800],
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-
-            const SizedBox(height: 10),
-            Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder:
-                    (context, index) => FoodTile(food: foodMenu[index]),
-                itemCount: foodMenu.length,
-              ),
+          ),
+    
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder:
+                  (context, index) => FoodTile(food: foodMenu[index]),
+              itemCount: foodMenu.length,
             ),
-
-            const SizedBox(height: 20),
-
-            const PopularTile(),
-          ],
-        ),
+          ),
+    
+          const SizedBox(height: 20),
+    
+          const PopularTile(),
+        ],
       ),
     );
   }

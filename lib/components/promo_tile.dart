@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sushi/components/custom_button.dart';
-import 'package:sushi/constants.dart';
+import 'custom_button.dart';
+import '../constants.dart';
 
 class PromoTile extends StatelessWidget {
   const PromoTile({super.key});

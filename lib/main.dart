@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sushi/views/intro_view.dart';
-import 'package:sushi/views/menu_view.dart';
+import 'views/intro_view.dart';
+import 'views/menu_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/MenuView' : (context) => const MenuView(),
-        '/IntroView': (context) => const IntroView()},
+        '/MenuView': (context) => const MenuView(),
+        '/IntroView': (context) => const IntroView(),
+      },
 
       home: const IntroView(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
