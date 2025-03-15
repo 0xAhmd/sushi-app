@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sushi/models/shop_model.dart';
 import 'package:sushi/views/food_detail_view.dart';
 import '../components/custom_text_field.dart';
 import '../components/food_tile.dart';
 import '../components/popular_tile.dart';
 import '../components/promo_tile.dart';
-import '../models/food_model.dart';
 
 class MenuView extends StatefulWidget {
   const MenuView({super.key});
@@ -15,59 +16,34 @@ class MenuView extends StatefulWidget {
 }
 
 class _MenuViewState extends State<MenuView> {
-  List<Food> foodMenu = [
-    Food(
-      name: "Sushi",
-      imagePath: 'assets/images/sushiz.png',
-      price: "20",
-      rating: "4.0",
-    ),
-
-    Food(
-      name: "Ramen",
-      imagePath: 'assets/images/ramen.png',
-      price: "60",
-      rating: "5.0",
-    ),
-
-    Food(
-      name: "tampura",
-      imagePath: 'assets/images/tempura.png',
-      price: "40",
-      rating: '4.5',
-    ),
-
-    Food(
-      name: "Takoyaki",
-      imagePath: "assets/images/takoyaki.png",
-      price: "30",
-      rating: "4.2",
-    ),
-
-    Food(
-      name: "Yakitori",
-      imagePath: "assets/images/yakitori.png",
-      price: "25",
-      rating: "4.0",
-    ),
-  ];
-
   void navigateToDetailView(int index) {
+    final shop = context.read<Shop>();
+    final foodMenu = shop.foodMenu;
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const FoodDetailView()),
+      MaterialPageRoute(
+        builder: (context) => FoodDetailView(food: foodMenu[index]),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final shop = context.read<Shop>();
+    final foodMenu = shop.foodMenu;
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        actions: const [
+        foregroundColor: Colors.grey[900],
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 12.0),
-            child: Icon(Icons.menu),
+            padding: const EdgeInsets.only(right: 12.0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/CartView');
+              },
+              icon: const Icon(Icons.shopping_basket_outlined),
+            ),
           ),
         ],
         centerTitle: true,
@@ -106,10 +82,12 @@ class _MenuViewState extends State<MenuView> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder:
-                  (context, index) =>
-                      FoodTile(onTap: () {
-                        navigateToDetailView(index);
-                      }, food: foodMenu[index]),
+                  (context, index) => FoodTile(
+                    onTap: () {
+                      navigateToDetailView(index);
+                    },
+                    food: foodMenu[index],
+                  ),
               itemCount: foodMenu.length,
             ),
           ),

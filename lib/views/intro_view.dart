@@ -11,12 +11,12 @@ class IntroView extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryRed,
       body: Padding(
-        padding: const EdgeInsets.only(left: 14.0, top: 18, right: 12),
+        padding: const EdgeInsets.only(left: 14.0, right: 12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 24),
+            const SizedBox(height: 10),
             Text(
               "SUSHI MAN",
               style: GoogleFonts.dmSerifDisplay(
@@ -24,18 +24,37 @@ class IntroView extends StatelessWidget {
                 fontSize: 36,
               ),
             ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.all(65.0),
-              child: Image.asset('assets/images/single_sushi 2.png'),
+            // const SizedBox(height: 40),
+            Center(
+              child: Stack(
+                children: [
+                  const Positioned(
+                    right: 10,
+                    top: 20,
+                    child: RotatedBox(
+                      quarterTurns: 1,
+                      child: Text(
+                        '   日       本      食',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Image.asset('assets/images/intro.png', height: 370),
+                ],
+              ),
             ),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(right: 4.0),
               child: Text(
                 "THE TASTE OF THE JAPANESE FOOD",
                 style: GoogleFonts.dmSerifDisplay(
                   color: Colors.white,
-                  fontSize: 48,
+                  fontSize: 44,
                 ),
               ),
             ),
@@ -44,7 +63,7 @@ class IntroView extends StatelessWidget {
               padding: const EdgeInsets.only(right: 4.0),
               child: Text(
                 "Feel the taste of the most popular japanese food from anyware and anytime",
-                style: GoogleFonts.poppins(fontSize: 16, color: Colors.white),
+                style: GoogleFonts.roboto(fontSize: 16, color: Colors.white),
               ),
             ),
 

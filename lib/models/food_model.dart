@@ -5,8 +5,10 @@ class Food {
   String price;
   String rating;
   String imagePath;
+  String description;
 
   Food({
+    required this.description,
     required this.name,
     required this.imagePath,
     required this.price,

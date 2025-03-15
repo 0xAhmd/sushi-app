@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sushi/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.text, this.onTap});
@@ -14,14 +16,14 @@ class CustomButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
-            color: const Color.fromARGB(108, 136, 92, 89),
+            color: secondaryColor,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 text,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
+                style: GoogleFonts.poppins(color: Colors.white, fontSize: 20),
               ),
               const SizedBox(width: 20),
               const Icon(Icons.arrow_forward, color: Colors.white),
